@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://fkltqj04kqv3"]
+
+[ext_resource type="Texture2D" uid="uid://4yilhe4a8djc" path="res://worm/tail.png" id="1_p3k4n"]
+[ext_resource type="PackedScene" uid="uid://tr5m8k4kt56r" path="res://worm/follower.tscn" id="2_ut44r"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cwnut"]
+size = Vector2(6, 6)
+
+[node name="Tail" type="Area2D"]
+collision_layer = 0
+collision_mask = 0
+input_pickable = false
+monitoring = false
+monitorable = false
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_p3k4n")
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_cwnut")
+
+[node name="Follower" parent="." instance=ExtResource("2_ut44r")]

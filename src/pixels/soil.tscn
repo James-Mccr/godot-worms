@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://si6pffmwbvcm"]
+
+[ext_resource type="Texture2D" uid="uid://8wcgdkd5570o" path="res://pixels/soil.png" id="1_e3688"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vkmqv"]
+size = Vector2(1, 1)
+
+[node name="Soil" type="Area2D"]
+collision_layer = 2
+collision_mask = 0
+input_pickable = false
+monitoring = false
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+light_mask = 0
+z_as_relative = false
+shape = SubResource("RectangleShape2D_vkmqv")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+light_mask = 0
+texture = ExtResource("1_e3688")

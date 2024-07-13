@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://tr5m8k4kt56r"]
+
+[ext_resource type="Script" path="res://worm/follower.gd" id="1_kh08c"]
+
+[node name="Follower" type="Node"]
+script = ExtResource("1_kh08c")

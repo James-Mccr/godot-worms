@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://cwuxru2udhuxg"]
+
+[ext_resource type="PackedScene" uid="uid://cghno8f3fnmfq" path="res://worm/head.tscn" id="1_bi5p8"]
+[ext_resource type="Script" path="res://worm/worm.gd" id="1_doknu"]
+[ext_resource type="PackedScene" uid="uid://tecnst0kv4kn" path="res://worm/body.tscn" id="2_e47eb"]
+[ext_resource type="PackedScene" uid="uid://fkltqj04kqv3" path="res://worm/tail.tscn" id="3_5vfy6"]
+
+[node name="Worm" type="Node2D"]
+script = ExtResource("1_doknu")
+
+[node name="Tail" parent="." instance=ExtResource("3_5vfy6")]
+position = Vector2(-28, 0)
+
+[node name="Body3" parent="." instance=ExtResource("2_e47eb")]
+position = Vector2(-21, 0)
+
+[node name="Body2" parent="." instance=ExtResource("2_e47eb")]
+position = Vector2(-14, 0)
+
+[node name="Body1" parent="." instance=ExtResource("2_e47eb")]
+position = Vector2(-6, 0)
+
+[node name="Head" parent="." instance=ExtResource("1_bi5p8")]
+
+[node name="Camera2D" type="Camera2D" parent="Head"]
+zoom = Vector2(4, 4)
