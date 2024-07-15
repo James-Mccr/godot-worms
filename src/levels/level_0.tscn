@@ -1,9 +1,27 @@
-[gd_scene load_steps=3 format=3 uid="uid://whtx4wdc4wgg"]
+[gd_scene load_steps=5 format=3 uid="uid://whtx4wdc4wgg"]
 
 [ext_resource type="Script" path="res://levels/level_0.gd" id="1_a0sef"]
 [ext_resource type="PackedScene" uid="uid://cwuxru2udhuxg" path="res://worm/worm.tscn" id="2_d2acw"]
+[ext_resource type="PackedScene" uid="uid://cu7sv4eoh5j2" path="res://gold/gold.tscn" id="3_70vvl"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_gbdm1"]
+b = Vector2(641, 0)
 
 [node name="Level0" type="Node"]
 script = ExtResource("1_a0sef")
 
 [node name="Worm" parent="." instance=ExtResource("2_d2acw")]
+z_index = 1
+position = Vector2(37, 13)
+
+[node name="Sun" parent="." instance=ExtResource("3_70vvl")]
+light_mask = 0
+position = Vector2(26, 24)
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(-1, 0)
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("SegmentShape2D_gbdm1")

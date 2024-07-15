@@ -13,6 +13,8 @@ config_version=5
 config/name="Squirm"
 run/main_scene="res://levels/level_0.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
+boot_splash/bg_color=Color(0.868985, 0.868985, 0.868985, 1)
+boot_splash/image="res://odyssey.png"
 config/icon="res://icon.svg"
 
 [autoload]
@@ -53,3 +55,9 @@ down={
 
 2d_physics/layer_1="player_head"
 2d_physics/layer_2="soil"
+2d_physics/layer_3="gold"
+2d_physics/layer_4="wall"
+
+[rendering]
+
+environment/defaults/default_clear_color=Color(0.220433, 0.135104, 6.99701e-05, 1)

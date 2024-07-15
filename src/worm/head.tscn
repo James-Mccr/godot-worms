@@ -1,13 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://cghno8f3fnmfq"]
+[gd_scene load_steps=5 format=3 uid="uid://cghno8f3fnmfq"]
 
 [ext_resource type="Script" path="res://worm/head.gd" id="1_cserr"]
 [ext_resource type="Texture2D" uid="uid://csdedjjegis2a" path="res://worm/head.png" id="1_uuenq"]
+[ext_resource type="AudioStream" uid="uid://fdofywhihs1d" path="res://sfx/pickup.ogg" id="3_xvmrx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0yv18"]
-size = Vector2(6, 6)
+size = Vector2(6, 4)
 
 [node name="Head" type="Area2D"]
-collision_mask = 2
+collision_mask = 6
 input_pickable = false
 monitorable = false
 script = ExtResource("1_cserr")
@@ -21,5 +22,8 @@ flip_h = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, 0)
 shape = SubResource("RectangleShape2D_0yv18")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_xvmrx")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
