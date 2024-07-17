@@ -14,13 +14,28 @@ func _ready():
 	width = get_parent().width
 	height = get_parent().height
 
+func spawn():
+	position = Vector2(randi_range(-12, width*length-20), randi_range(-12, height*length-20))
+
+func respawn():
+	$GPUParticles2D.position = position
+	$GPUParticles2D.emitting = true
+	spawn()
+
 func _process(_delta):
-	var distance = $AudioStreamPlayer2D.global_position.distance_to(player.position) 
+	if is_queued_for_deletion():
+		return
+	# loudness based on facing the target gold
+	#var vector_to_target = global_position - player.global_position
+	#var dot_angle = Vector2.RIGHT.rotated(player.rotation).dot(vector_to_target.normalized())
+	#var volume_mod = dot_angle*10
+	#$AudioStreamPlayer2D.volume_db = volume_mod
+	
+	var distance = $AudioStreamPlayer2D.global_position.distance_to(player.global_position) 
 	var relative_pitch
 	if distance > 300:
-		$AudioStreamPlayer2D.stop()
-		return
-	if distance > 200:
+		relative_pitch = 0.5
+	elif distance > 200:
 		relative_pitch = 0.75
 	elif distance > 150:
 		relative_pitch = 1
@@ -30,17 +45,13 @@ func _process(_delta):
 		relative_pitch = 1.5
 	elif distance > 25:
 		relative_pitch = 1.75
-	else:
+	elif distance > 12:
 		relative_pitch = 2
-		
-	if not $AudioStreamPlayer2D.playing:
-		$AudioStreamPlayer2D.play()
+	else:
+		relative_pitch = 3
 	$AudioStreamPlayer2D.pitch_scale = relative_pitch
 
-func spawn():
-	position = Vector2(randi_range(0, (width-1)*length), randi_range(0, (height-1)*length))
-
-func respawn():
-	$GPUParticles2D.position = position
-	$GPUParticles2D.emitting = true
-	position = Vector2(randi_range(0, (width-1)*length), randi_range(0, (height-1)*length))
+func disable():
+	set_process(false)
+	$AudioStreamPlayer2D.stop()
+	hide()

@@ -32,6 +32,8 @@ shape = SubResource("RectangleShape2D_0nori")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_yy1gn")
+autoplay = true
+panning_strength = 10.0
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 top_level = true

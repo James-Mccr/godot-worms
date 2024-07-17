@@ -56,7 +56,7 @@ down={
 2d_physics/layer_1="player_head"
 2d_physics/layer_2="soil"
 2d_physics/layer_3="gold"
-2d_physics/layer_4="wall"
+2d_physics/layer_4="mole"
 
 [rendering]
 

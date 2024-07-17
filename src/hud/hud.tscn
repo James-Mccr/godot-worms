@@ -1,0 +1,56 @@
+[gd_scene load_steps=2 format=3 uid="uid://db4au3ia80ge"]
+
+[ext_resource type="Script" path="res://hud/hud.gd" id="1_eby6u"]
+
+[node name="Hud" type="CanvasLayer"]
+script = ExtResource("1_eby6u")
+
+[node name="GoldCount" type="Label" parent="."]
+visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -30.0
+offset_right = 30.0
+offset_bottom = 45.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 32
+text = "0"
+
+[node name="MoleAlert" type="Label" parent="."]
+visible = false
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -87.0
+offset_top = -23.0
+offset_right = 87.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 0.501961)
+theme_override_font_sizes/font_size = 24
+text = "Something is coming..."
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 8.0
+one_shot = true
+
+[node name="OverLabel" type="Label" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -102.5
+offset_top = -25.0
+offset_right = 102.5
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 36
+text = "GAME OVER"
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

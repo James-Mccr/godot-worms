@@ -1,8 +1,8 @@
 extends Node
 
 var map = preload("res://levels/soil_tile.tscn")
-var width = 15
-var height = 15
+var width = 10
+var height = 10
 var length = 32
 
 func _ready():
@@ -17,4 +17,13 @@ func _ready():
 			add_child(tile)
 		x_offset += length
 		y_offset = 0
-	$Sun.spawn()
+	$Gold.spawn()
+	$Worm.connect("player_eaten", gameover)
+
+func gameover():
+	$Worm.disable()
+	$Gold.disable()
+	$AudioStreamPlayer.play()
+
+func _on_audio_stream_player_finished():
+	get_tree().quit()

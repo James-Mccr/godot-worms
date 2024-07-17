@@ -1,9 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://cwuxru2udhuxg"]
+[gd_scene load_steps=8 format=3 uid="uid://cwuxru2udhuxg"]
 
 [ext_resource type="PackedScene" uid="uid://cghno8f3fnmfq" path="res://worm/head.tscn" id="1_bi5p8"]
 [ext_resource type="Script" path="res://worm/worm.gd" id="1_doknu"]
 [ext_resource type="PackedScene" uid="uid://tecnst0kv4kn" path="res://worm/body.tscn" id="2_e47eb"]
 [ext_resource type="PackedScene" uid="uid://fkltqj04kqv3" path="res://worm/tail.tscn" id="3_5vfy6"]
+[ext_resource type="PackedScene" uid="uid://db4au3ia80ge" path="res://hud/hud.tscn" id="5_b3kai"]
+[ext_resource type="Texture2D" uid="uid://bfpsudd573ion" path="res://worm/alert.png" id="6_g041a"]
+[ext_resource type="AudioStream" uid="uid://fdofywhihs1d" path="res://sfx/pickup.ogg" id="7_y3fbe"]
 
 [node name="Worm" type="Node2D"]
 script = ExtResource("1_doknu")
@@ -21,7 +24,33 @@ position = Vector2(-14, 0)
 position = Vector2(-6, 0)
 
 [node name="Head" parent="." groups=["Player"] instance=ExtResource("1_bi5p8")]
-collision_mask = 14
 
 [node name="Camera2D" type="Camera2D" parent="Head"]
 zoom = Vector2(3, 3)
+
+[node name="Hud" parent="Head/Camera2D" instance=ExtResource("5_b3kai")]
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Head"]
+remote_path = NodePath("../../Alert")
+update_rotation = false
+
+[node name="SpawnTimer" type="Timer" parent="."]
+wait_time = 20.0
+one_shot = true
+
+[node name="AlertTimer" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
+
+[node name="Alert" type="Sprite2D" parent="."]
+visible = false
+texture_filter = 1
+texture = ExtResource("6_g041a")
+offset = Vector2(0, -12)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_y3fbe")
+pitch_scale = 5.5
+
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="AlertTimer" to="." method="_on_alert_timer_timeout"]
