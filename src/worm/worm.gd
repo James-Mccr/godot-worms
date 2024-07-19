@@ -3,7 +3,7 @@ extends Node2D
 signal player_eaten
 
 const base_rotation = 2
-var max_speed = Vector2(75, 0)
+var max_speed = Vector2(40, 0)
 var speed := Vector2(0, 0)
 var brake_speed = Vector2(1, 0)
 var acceleration := Vector2(0.5, 0)
@@ -45,9 +45,10 @@ func _physics_process(delta):
 func gold_got():
 	max_speed.x += 5
 	nuggets += 1
-	$Head/Camera2D/Hud.update_gold_count(nuggets)
-	if nuggets == 3:
-		$Head/Camera2D/Hud.alert_mole()
+	if nuggets == 5:
+		$AudioStreamPlayer2.play()
+		$Question.show()
+		$QuestionTimer.start()
 		$SpawnTimer.start()
 
 func disable():
@@ -63,8 +64,11 @@ func _on_timer_timeout():
 	$AudioStreamPlayer.play()
 	$AlertTimer.start()
 	var mole = preload("res://mole/mole.tscn").instantiate()
-	mole.position = global_position + Vector2(350, 0).rotated(randf_range(0, 2*PI))
+	mole.position = global_position + Vector2(225, 0).rotated(randf_range(0, 2*PI))
 	get_parent().add_child(mole)
 
 func _on_alert_timer_timeout():
 	$Alert.hide()
+
+func _on_question_timer_timeout():
+	$Question.hide()

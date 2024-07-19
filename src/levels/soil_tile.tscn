@@ -10,11 +10,10 @@ scenes/1/scene = ExtResource("2_deda8")
 tile_size = Vector2i(1, 1)
 sources/0 = SubResource("TileSetScenesCollectionSource_51b0m")
 
-[node name="SoilTile" type="Node"]
+[node name="SoilTile" type="Node2D"]
 script = ExtResource("1_rrtse")
 
 [node name="TileMap" type="TileMap" parent="."]
-visible = false
 light_mask = 0
 tile_set = SubResource("TileSet_lvd5g")
 format = 2
@@ -22,8 +21,8 @@ layer_0/tile_data = PackedInt32Array(-983056, 0, 65536, -917520, 0, 65536, -8519
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 light_mask = 0
-position = Vector2(1.04308e-06, 1.04308e-06)
-scale = Vector2(1.7, 1.7)
+position = Vector2(-1.2219e-06, -1.2219e-06)
+scale = Vector2(1.6, 1.6)
 
 [connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

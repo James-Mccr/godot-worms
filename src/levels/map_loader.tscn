@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://d2o4h01bsuxv8"]
+
+[ext_resource type="Script" path="res://levels/map_loader.gd" id="1_xmqyb"]
+
+[node name="MapLoader" type="Node2D"]
+script = ExtResource("1_xmqyb")

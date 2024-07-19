@@ -13,7 +13,7 @@ config_version=5
 config/name="Squirm"
 run/main_scene="res://levels/level_0.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
-boot_splash/bg_color=Color(0.868985, 0.868985, 0.868985, 1)
+boot_splash/bg_color=Color(0.284371, 0.149271, 3.91784e-05, 1)
 boot_splash/image="res://odyssey.png"
 config/icon="res://icon.svg"
 

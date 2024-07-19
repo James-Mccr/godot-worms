@@ -10,9 +10,6 @@ var length
 
 func _ready():
 	player = get_tree().get_first_node_in_group("Player")
-	length = get_parent().length
-	width = get_parent().width
-	height = get_parent().height
 
 func spawn():
 	position = Vector2(randi_range(-12, width*length-20), randi_range(-12, height*length-20))

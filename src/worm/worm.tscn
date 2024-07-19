@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cwuxru2udhuxg"]
+[gd_scene load_steps=9 format=3 uid="uid://cwuxru2udhuxg"]
 
 [ext_resource type="PackedScene" uid="uid://cghno8f3fnmfq" path="res://worm/head.tscn" id="1_bi5p8"]
 [ext_resource type="Script" path="res://worm/worm.gd" id="1_doknu"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://db4au3ia80ge" path="res://hud/hud.tscn" id="5_b3kai"]
 [ext_resource type="Texture2D" uid="uid://bfpsudd573ion" path="res://worm/alert.png" id="6_g041a"]
 [ext_resource type="AudioStream" uid="uid://fdofywhihs1d" path="res://sfx/pickup.ogg" id="7_y3fbe"]
+[ext_resource type="Texture2D" uid="uid://otxle8cnn85m" path="res://worm/question.png" id="8_dlr23"]
 
 [node name="Worm" type="Node2D"]
 script = ExtResource("1_doknu")
@@ -34,6 +35,11 @@ zoom = Vector2(3, 3)
 remote_path = NodePath("../../Alert")
 update_rotation = false
 
+[node name="RemoteTransform2D2" type="RemoteTransform2D" parent="Head"]
+remote_path = NodePath("../../Question")
+update_rotation = false
+update_scale = false
+
 [node name="SpawnTimer" type="Timer" parent="."]
 wait_time = 20.0
 one_shot = true
@@ -52,5 +58,20 @@ offset = Vector2(0, -12)
 stream = ExtResource("7_y3fbe")
 pitch_scale = 5.5
 
+[node name="Question" type="Sprite2D" parent="."]
+visible = false
+texture_filter = 1
+texture = ExtResource("8_dlr23")
+offset = Vector2(0, -10)
+
+[node name="QuestionTimer" type="Timer" parent="."]
+wait_time = 6.0
+one_shot = true
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_y3fbe")
+pitch_scale = 0.5
+
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="AlertTimer" to="." method="_on_alert_timer_timeout"]
+[connection signal="timeout" from="QuestionTimer" to="." method="_on_question_timer_timeout"]

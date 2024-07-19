@@ -17,8 +17,11 @@ func _ready():
 			add_child(tile)
 		x_offset += length
 		y_offset = 0
+	$Gold.length = length
+	$Gold.width = width
+	$Gold.height = height		
 	$Gold.spawn()
-	$Worm.connect("player_eaten", gameover)
+	$Worm.connect("player_eaten", gameover)	
 
 func gameover():
 	$Worm.disable()

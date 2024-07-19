@@ -10,13 +10,11 @@ size = Vector2(26, 17)
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_32rhf"]
 particle_flag_disable_z = true
-emission_shape_offset = Vector3(20, 5, 0)
+emission_shape_offset = Vector3(30, -10, 0)
 direction = Vector3(0, 0, 0)
 spread = 180.0
-initial_velocity_min = 3.0
-initial_velocity_max = 9.0
-orbit_velocity_min = 1.0
-orbit_velocity_max = 1.0
+initial_velocity_min = 4.0
+initial_velocity_max = 12.0
 gravity = Vector3(0, 0, 0)
 
 [node name="Mole" type="Area2D"]
@@ -36,20 +34,21 @@ position = Vector2(31, -7.5)
 shape = SubResource("RectangleShape2D_v46pt")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 15.0
+wait_time = 20.0
 autostart = true
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
-position = Vector2(30, -10)
+z_index = 2
 emitting = false
+amount = 10
 process_material = SubResource("ParticleProcessMaterial_32rhf")
 texture = ExtResource("3_pm2x0")
 lifetime = 2.0
 one_shot = true
-explosiveness = 0.5
+explosiveness = 1.0
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_67xwv")
-pitch_scale = 0.12
+pitch_scale = 0.15
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

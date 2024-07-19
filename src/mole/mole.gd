@@ -1,6 +1,6 @@
 extends Area2D
 
-var speed := 30
+var speed := 20
 var player : Area2D
 
 func _ready():

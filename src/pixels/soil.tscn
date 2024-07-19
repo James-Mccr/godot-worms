@@ -6,6 +6,7 @@
 size = Vector2(1, 1)
 
 [node name="Soil" type="Area2D"]
+light_mask = 0
 collision_layer = 2
 collision_mask = 0
 input_pickable = false
