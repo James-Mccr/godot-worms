@@ -11,8 +11,9 @@ config_version=5
 [application]
 
 config/name="Squirm"
-run/main_scene="res://levels/level_0.tscn"
+run/main_scene="res://levels/map0.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
+run/max_fps=30
 boot_splash/bg_color=Color(0.284371, 0.149271, 3.91784e-05, 1)
 boot_splash/image="res://odyssey.png"
 config/icon="res://icon.svg"
@@ -23,8 +24,8 @@ Globals="*res://Globals.gd"
 
 [display]
 
-window/size/viewport_width=640
-window/size/viewport_height=360
+window/size/viewport_width=320
+window/size/viewport_height=320
 window/size/mode=2
 window/stretch/mode="viewport"
 

@@ -27,7 +27,6 @@ position = Vector2(-6, 0)
 [node name="Head" parent="." groups=["Player"] instance=ExtResource("1_bi5p8")]
 
 [node name="Camera2D" type="Camera2D" parent="Head"]
-zoom = Vector2(3, 3)
 
 [node name="Hud" parent="Head/Camera2D" instance=ExtResource("5_b3kai")]
 

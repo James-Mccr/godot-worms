@@ -5,7 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://fdofywhihs1d" path="res://sfx/pickup.ogg" id="3_xvmrx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0yv18"]
-size = Vector2(6, 4)
+size = Vector2(4, 4)
 
 [node name="Head" type="Area2D"]
 collision_mask = 14
@@ -20,7 +20,7 @@ offset = Vector2(2, 0)
 flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, 0)
+position = Vector2(2, 0)
 shape = SubResource("RectangleShape2D_0yv18")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

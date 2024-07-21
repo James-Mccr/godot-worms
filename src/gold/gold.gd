@@ -6,13 +6,12 @@ const min_pitch = 1.0
 const max_pitch = 1.5
 var width
 var height
-var length
 
 func _ready():
 	player = get_tree().get_first_node_in_group("Player")
 
 func spawn():
-	position = Vector2(randi_range(-12, width*length-20), randi_range(-12, height*length-20))
+	position = Vector2(randi_range(-width, width), randi_range(-height, height))
 
 func respawn():
 	$GPUParticles2D.position = position
@@ -31,6 +30,8 @@ func _process(_delta):
 	var distance = $AudioStreamPlayer2D.global_position.distance_to(player.global_position) 
 	var relative_pitch
 	if distance > 300:
+		relative_pitch = 0.35
+	elif distance > 250:
 		relative_pitch = 0.5
 	elif distance > 200:
 		relative_pitch = 0.75
@@ -38,9 +39,9 @@ func _process(_delta):
 		relative_pitch = 1
 	elif distance > 100:
 		relative_pitch = 1.25
-	elif distance > 50:
+	elif distance > 60:
 		relative_pitch = 1.5
-	elif distance > 25:
+	elif distance > 30:
 		relative_pitch = 1.75
 	elif distance > 12:
 		relative_pitch = 2

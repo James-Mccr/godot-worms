@@ -5,6 +5,24 @@
 [node name="Hud" type="CanvasLayer"]
 script = ExtResource("1_eby6u")
 
+[node name="Score" type="Label" parent="."]
+visible = false
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -44.0
+offset_right = 20.0
+offset_bottom = -21.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "X"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="OverLabel" type="Label" parent="."]
 visible = false
 anchors_preset = 8
@@ -20,3 +38,22 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 36
 text = "GAME OVER"
+
+[node name="Button" type="Button" parent="."]
+visible = false
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.5
+offset_top = 25.0
+offset_right = 40.5
+offset_bottom = 57.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+text = "Try Again"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

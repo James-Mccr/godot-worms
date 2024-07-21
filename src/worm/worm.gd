@@ -9,6 +9,7 @@ var brake_speed = Vector2(1, 0)
 var acceleration := Vector2(0.5, 0)
 var deceleration := Vector2(0.25, 0)
 var nuggets = 0
+var map_loader
 
 func _ready():
 	$Body1/Follower.leader = $Head
@@ -17,6 +18,10 @@ func _ready():
 	$Tail/Follower.leader = $Body3
 	$Head.connect("pickup", gold_got)
 	$Head.connect("eaten", eaten)
+	map_loader = get_parent().get_node("MapLoader")
+	var new_collision = RectangleShape2D.new()
+	new_collision.size = Vector2(scale*$Head/CollisionShape2D.shape.size)
+	$Head/CollisionShape2D.shape = new_collision
 
 func _physics_process(delta):
 	if Input.is_action_pressed("up"):
@@ -52,11 +57,12 @@ func gold_got():
 		$SpawnTimer.start()
 
 func disable():
-	set_physics_process(false)
 	hide()
+	$Head.hide()
+	set_physics_process(false)
 
 func eaten():
-	$Head/Camera2D/Hud.over()
+	$Head/Camera2D/Hud.over(nuggets)
 	player_eaten.emit()
 
 func _on_timer_timeout():
@@ -64,7 +70,7 @@ func _on_timer_timeout():
 	$AudioStreamPlayer.play()
 	$AlertTimer.start()
 	var mole = preload("res://mole/mole.tscn").instantiate()
-	mole.position = global_position + Vector2(225, 0).rotated(randf_range(0, 2*PI))
+	mole.global_position = global_position + Vector2(225, 0).rotated(randf_range(0, 2*PI))
 	get_parent().add_child(mole)
 
 func _on_alert_timer_timeout():

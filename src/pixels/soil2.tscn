@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dyq37wulyogqh"]
+
+[ext_resource type="Texture2D" uid="uid://8wcgdkd5570o" path="res://pixels/soil.png" id="1_akndk"]
+[ext_resource type="Script" path="res://pixels/soil2.gd" id="2_vd28e"]
+
+[node name="Sprite" type="Sprite2D"]
+light_mask = 0
+texture = ExtResource("1_akndk")
+script = ExtResource("2_vd28e")
